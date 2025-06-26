@@ -10,10 +10,8 @@ class ReplayBuffer:
     def clear_batch(self):
         self.s = []
         self.a = []
-        self.a_logprob = []
         self.r = []
         self.s_ = []
-        self.dw = []
         self.done = []
         self.count = 0
         

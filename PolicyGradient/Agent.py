@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 class Agent():
     def __init__(self , args , env , hidden_layer_list=[64,64]):
         # Hyperparameter
-        self.training_episodes = args.training_episodes
+        self.rollout_episodes = args.rollout_episodes
         self.advantage = args.advantage
         self.num_states = args.num_states
         self.num_actions = args.num_actions
@@ -66,7 +66,7 @@ class Agent():
 
                 state = next_state
             self.replay_buffer.to_episode_batch()  # Convert to episode batch
-            if (epoch + 1)% self.training_episodes == 0 and epoch != 0:
+            if (epoch + 1)% self.rollout_episodes == 0 and epoch != 0:
                 # Update the model
                 self.update()
                 self.replay_buffer.clear_episode_batch()  # Clear the episode batch after updating

@@ -28,6 +28,6 @@ class Network(nn.Module):
         # Pass input through all layers except the last, applying ReLU activation
         for i in range(len(self.layers) - 1):
             x = self.relu(self.layers[i](x))
-        # The final layer outputs the Q-value directly (no activation)
+        # The final layer outputs action probabilities
         action_probability  = self.softmax(self.layers[-1](x))
         return action_probability
